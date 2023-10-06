@@ -1,0 +1,70 @@
+from task.models import Todos
+
+ModelName.objects.create(field_name=value,field_name=value)
+
+Todos.objects.create(title="water bill",user="hari")
+
+
+================fetch all records===========
+
+qs=ModelName.objects.all()
+
+=============fetch all records inserted by hari==========
+
+qs=ModelName.object.filter(field_name=value)
+
+
+==========fetch all pending records inserted by safna===========
+
+qs=ModelName.objects.filter(field_name=value,field_name=value)
+
+
+==========get:retrieve 1 record====================
+
+qs=ModelName.objects.get(field_name=value)
+
+
+==========update():update a record==============
+
+ModelName.objects.filter(field_name=value).update(field_name=value)
+
+
+
+fetch all record whose id in range(2,6)
+
+qs=ModelName.objects.filter(id__gte=2,id__lte=6)
+
+
+field lookup 
+gt
+lt
+gte
+lte
+in
+
+
+
+======================================BOOK=========================================
+
+from task.models import Books
+
+Books.objects.create(name="the alchemist",author="paulo",price=100,publisher="akshara")
+Books.objects.create(name="naalukett",author="mt",price=200,publisher="ak") 
+Books.objects.create(name="wings of fire",author="apj",price=600,publisher="ar")  
+Books.objects.create(name="aadujeevitham",author="benyamin",price=600,publisher="ak")   
+Books.objects.create(name="towards-freedom",author="jawaharlal nehru",price=800,publisher="akshara") 
+
+
+qs=Books.objects.all()
+
+qs=Books.objects.filter(author="apj")
+
+qs=Books.objects.filter(author="apj",name="wings of fire")
+
+
+qs=Books.objects.get(name="naalukett")
+
+Books.objects.filter(id=2).update(price=700)
+
+qs=Books.objects.filter(id__gte=1,id__lte=5)
+
