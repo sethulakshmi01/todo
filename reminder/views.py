@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
-from reminder.forms import RegistrationForm,LoginForm,TodoCreateForm
-from django.views.generic import View,TemplateView
+from django.urls import reverse_lazy
+from reminder.forms import RegistrationForm,LoginForm,TodoCreateForm,TodoChangeForm
+from django.views.generic import View,TemplateView,ListView,DetailView,UpdateView
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from reminder.models import Todos
@@ -59,3 +60,19 @@ class TodoCreateView(View):
             messages.error(request,"insertion failed")
             return render(request,"reminder/todo_add.html",{"form":form})
 
+
+class TodoListView(ListView):
+    template_name="reminder/todo_list.html"
+    context_object_name="todos"
+    model=Todos
+
+class TodoDetailView(DetailView):
+    template_name="reminder/todo_detail.html"
+    context_object_name="todos"
+    model=Todos
+
+class TodoUpdateView(UpdateView):
+    template_name="reminder/todo_update.html"
+    form_class=TodoChangeForm
+    model=Todos
+    success_url=reverse_lazy("todo-list")
